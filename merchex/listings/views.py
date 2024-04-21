@@ -9,3 +9,6 @@ def about(request):
 
 def contact(request):
     return HttpResponse('<h1>Contactez nous</h1> <p> Ici!</p>')
+
+def listings(request):
+    return HttpResponse('<h1>Liste</h1>')
