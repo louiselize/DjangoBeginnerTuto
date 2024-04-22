@@ -1,0 +1,9 @@
+<html>
+    <h1>Annonce</h1>
+    <p>Mes annonces sont:</p>
+    <ul>
+        {% for listing in listings %}
+        <li>{{ listing.title }}</li>
+        {% endfor %}
+    </ul>
+</html>
