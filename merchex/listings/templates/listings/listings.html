@@ -1,4 +1,7 @@
-<html>
+{% extends 'listings/base.html' %}
+
+{% block content %}
+
     <h1>Annonce</h1>
     <p>Mes annonces sont:</p>
     <ul>
@@ -6,4 +9,6 @@
         <li>{{ listing.title }}</li>
         {% endfor %}
     </ul>
-</html>
+
+{% endblock %}
+   
