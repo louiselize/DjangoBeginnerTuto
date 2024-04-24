@@ -34,3 +34,4 @@ class Listings(models.Model):
         null=True
     )
     type = models.fields.CharField(Type.choices, max_length=3, default=Type.OTHER)
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
