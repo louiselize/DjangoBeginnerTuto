@@ -16,4 +16,19 @@ class Band(models.Model):
     official_homepage = models.fields.URLField(null=True, blank=True)
 
 class Listings(models.Model):
-    title = models.fields.CharField(max_length=100)
+
+    class Type(models.TextChoices):
+        CD = "CD"
+        VINYL = "VN"
+        CASSETTE = "CS"
+        DIGITAL = "DG"
+        OTHER = "OT"
+
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000, default="Enter a description")
+    sold = models.BooleanField(default=False)
+    year = models.fields.IntegerField(
+        validators=[MinValueValidator(1900), MaxValueValidator(2021)],
+        null=True
+    )
+    type = models.fields.CharField(Type.choices, max_length=3, default=Type.OTHER)
