@@ -10,6 +10,6 @@ admin.site.register(Band, BandAdmin) # nous modifions cette ligne, en ajoutant u
 
 
 class ListingsAdmin(admin.ModelAdmin):  # nous insérons ces deux lignes..
-    list_display = ('title','year') # liste les champs que nous voulons sur l'affichage de la liste
+    list_display = ('title', 'year', 'band') # liste les champs que nous voulons sur l'affichage de la liste
 
 admin.site.register(Listings, ListingsAdmin) # nous modifions cette ligne, en ajoutant un deuxième argument
