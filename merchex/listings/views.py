@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from listings.models import Band, Listings
-from listings.forms import BandForm, ContactUsForm
+from listings.forms import BandForm, ContactUsForm, ListingsForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 
@@ -72,3 +72,17 @@ def listings_detail(request, id):
     return render(request,
             'listings/listings_detail.html',
             {'listing': listing}) 
+
+def listings_create(request):
+    if request.method == 'POST':
+        form = ListingsForm(request.POST)
+        if form.is_valid():
+            listing = form.save()
+            return redirect('listing-detail', listing.id)
+
+    else:
+        form = ListingsForm()
+
+    return render(request,
+            'listings/listings_create.html',
+            {'form': form})

@@ -4,7 +4,7 @@
 
     <h1>Contactez nous</h1> 
     <p> Ici !!</p>
-    <form action="" method="post" novalidate>
+    <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}        
         <input type="submit" value="Envoyer">
