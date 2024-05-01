@@ -11,6 +11,13 @@
     {% if band.official_homepage %}
     <li><a href="{{ band.official_homepage }}">{{ band.official_homepage }}</a></li>
     {% endif %}
+    <li> Annonce : 
+        <ul>
+        {% for listing in band.listings_set.all %} 
+            <li><a href="{% url 'listing-detail' listing.id %}">{{ listing.title }}</a></li>
+        {% endfor%} 
+        </ul>
+    </li>
 </ul>
 
 <p>{{ band.biography }}</p>

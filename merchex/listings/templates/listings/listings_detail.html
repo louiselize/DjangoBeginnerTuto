@@ -1,0 +1,19 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+
+    <h1>Annonce</h1>
+    <p>Mes annonces sont:</p>
+    <ul>
+        <li>Titre : {{ listing.title }}</li>
+        <li>Année : {{ listing.year }}</li>
+        <li>Description : {{ listing.description }}</li>
+        <li>Actif : {{ listing.sold |yesno }}</li>
+        <li>Band : {{ listing.band }}</li>
+    </ul>
+
+    <a href="{% url 'listing-list' %}">Retour à toutes les annonces</a>
+
+
+{% endblock %}
+   

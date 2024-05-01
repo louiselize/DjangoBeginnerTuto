@@ -23,8 +23,14 @@ def contact(request):
     return render(request,
     'listings/contact.html')
 
-def listings(request):
+def listings_list(request):
     listings = Listings.objects.all()
     return render(request,
-    'listings/listings.html',
+    'listings/listings_list.html',
     {'listings': listings})
+
+def listings_detail(request, id):
+    listing = Listings.objects.get(id=id)
+    return render(request,
+            'listings/listings_detail.html',
+            {'listing': listing}) 
