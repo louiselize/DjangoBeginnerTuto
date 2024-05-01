@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from listings.models import Band, Listings
-from listings.forms import ContactUsForm
+from listings.forms import BandForm, ContactUsForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect
 
@@ -16,6 +16,23 @@ def band_detail(request, id):
   return render(request,
           'listings/band_detail.html',
           {'band': band}) 
+
+def band_create(request):
+    if request.method == 'POST':
+        form = BandForm(request.POST)
+        if form.is_valid():
+            # créer une nouvelle « Band » et la sauvegarder dans la db
+            band = form.save()
+            # redirige vers la page de détail du groupe que nous venons de créer
+            # nous pouvons fournir les arguments du motif url comme arguments à la fonction de redirection
+            return redirect('band-detail', band.id)
+
+    else:
+        form = BandForm()
+
+    return render(request,
+            'listings/band_create.html',
+            {'form': form})
 
 def about(request):
     return render(request,
