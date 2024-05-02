@@ -97,3 +97,20 @@ def listings_create(request):
     return render(request,
             'listings/listings_create.html',
             {'form': form})
+
+def listings_change(request, id):
+    listing = Listings.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = ListingsForm(request.POST, instance=listing)
+        if form.is_valid():
+            # mettre à jour le groupe existant dans la base de données
+            form.save()
+            # rediriger vers la page détaillée du groupe que nous venons de mettre à jour
+            return redirect('listing-change', listing.id)
+    else:
+        form = ListingsForm(instance=listing)
+
+    return render(request,
+                'listings/listings_change.html',
+                {'form': form})

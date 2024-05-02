@@ -30,5 +30,6 @@ urlpatterns = [
     path('listings/', views.listings_list, name="listing-list"),
     path('listings/<int:id>/', views.listings_detail, name='listing-detail'),   
     path('listings/add/', views.listings_create, name='listing-create'),    
+    path('listings/<int:id>/change', views.listings_change, name='listing-change'),   
 
 ]

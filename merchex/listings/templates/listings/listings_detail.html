@@ -12,6 +12,8 @@
         <li>Band : {{ listing.band }}</li>
     </ul>
 
+    <a href="{% url 'listing-change' listing.id %}">Modifier cette annonce</a>   
+
     <a href="{% url 'listing-list' %}">Retour à toutes les annonces</a>
 
 
