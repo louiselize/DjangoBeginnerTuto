@@ -129,3 +129,18 @@ def listings_change(request, id):
     return render(request,
                 'listings/listings_change.html',
                 {'form': form})
+
+def listings_delete(request, id):
+    listing = Listings.objects.get(id=id)  # nécessaire pour GET et pour POST
+
+    if request.method == 'POST':
+        # supprimer le groupe de la base de données
+        listing.delete()
+        # rediriger vers la liste des groupes
+        return redirect('listing-list')
+
+    # pas besoin de « else » ici. Si c'est une demande GET, continuez simplement
+
+    return render(request,
+                    'listings/listings_delete.html',
+                    {'listing': listing})
